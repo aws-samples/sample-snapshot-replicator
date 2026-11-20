@@ -1,0 +1,28 @@
+[package]
+name = "snapshot-replicator"
+version = "0.2.0"
+edition = "2021"
+rust-version = "1.94.1"
+license = "MIT-0"
+description = "Sample code: cross-partition Amazon EBS snapshot replication using the EBS Direct APIs"
+repository = "https://github.com/aws-samples/sample-snapshot-replicator"
+readme = "README.md"
+# This is sample code, not a crate intended for crates.io.
+publish = false
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+# The SDK crates' default `rustls` feature enables the legacy hyper 0.14 /
+# rustls 0.21 client, which carries known advisories. Use only the current
+# `default-https-client` (hyper 1.x / rustls 0.23) instead.
+aws-config = { version = "1", default-features = false, features = ["behavior-version-latest", "default-https-client", "rt-tokio", "credentials-process", "sso"] }
+aws-sdk-ebs = { version = "1", default-features = false, features = ["default-https-client", "rt-tokio"] }
+aws-sdk-ec2 = { version = "1", default-features = false, features = ["default-https-client", "rt-tokio"] }
+thiserror = "2"
+sha2 = "0.11"
+base64 = "0.22"
+indicatif = "0.18"
+env_logger = "0.11"
+log = "0.4"
+futures = "0.3"
