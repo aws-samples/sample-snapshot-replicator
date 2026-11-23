@@ -1,0 +1,33 @@
+# Build output
+/target
+
+# Local run artifacts
+snapshot-replicator-state-*.csv
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+
+# AI assistant / agent tooling (local only)
+AGENTS.md
+/.agents/
+/.kiro/
+
+# Momentum agent tooling: sessions, indexes, workflows and review reports
+# contain local paths and conversation history. Never commit.
+/.momentum/
+
+# Environment / secrets
+.env
+.env.*
+*.env
+
+# Editors and logs
+.idea/
+.vscode/
+*.swp
+*~
+*.log
+
+# State files from interrupted runs (CSV today, JSON in older versions)
+snapshot-replicator-state-*.json

@@ -1,0 +1,57 @@
+[graph]
+targets = [
+    "x86_64-unknown-linux-gnu",
+    "x86_64-unknown-linux-musl",
+    "aarch64-unknown-linux-gnu",
+    "aarch64-unknown-linux-musl",
+    "x86_64-apple-darwin",
+    "aarch64-apple-darwin",
+]
+
+[licenses]
+confidence-threshold = 0.93
+allow = [
+    "Apache-2.0",
+    "BSD-3-Clause",
+    "BSL-1.0",
+    #"CC0-1.0",       # OK but currently unused
+    "ISC",
+    "MIT",
+    "MIT-0",
+    #"OpenSSL",       # OK but currently unused
+    "Unicode-3.0",
+    "Unlicense",
+    #"Zlib",          # OK but currently unused
+]
+
+exceptions = []
+
+[[licenses.clarify]]
+name = "aws-lc-sys"
+expression = "ISC AND (Apache-2.0 OR ISC) AND OpenSSL"
+license-files = [
+    { path = "LICENSE", hash = 0x1c975f04 },
+]
+
+[[licenses.clarify]]
+name = "aws-lc-rs"
+expression = "ISC AND (Apache-2.0 OR ISC)"
+license-files = [
+    { path = "LICENSE", hash = 0xb7061e01 },
+]
+
+[advisories]
+version = 2
+ignore = []
+
+[bans]
+multiple-versions = "warn"
+wildcards = "deny"
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+# Explicit rather than relying on cargo-deny's defaults: crates.io only, and no
+# git dependencies.
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]
+allow-git = []
